@@ -1,0 +1,110 @@
+{
+  "modules": [
+    {
+      "type": "database",
+      "id": "mysql",
+      "name": "MySQL",
+      "versions": [
+          {
+            "system": "windows",
+            "id": "9.7.1",
+            "url": "https://dev.mysql.com/get/Downloads/MySQL-9.7/mysql-9.7.1-winx64-debug-test.zip",
+            "format": "zip"
+          },
+          {
+            "system": "windows",
+            "id": "8.4.10",
+            "url": "https://dev.mysql.com/get/Downloads/MySQL-8.4/mysql-8.4.10-winx64.zip",
+            "format": "zip"
+          }
+      ],
+      "defaults": {
+        "port": 3306,
+        "username": "root",
+        "password": ""
+      },
+      "other_ports": [3307, 3308, 3309]
+    },
+    {
+      "type": "database",
+      "id": "postgresql",
+      "name": "PostgreSQL",
+      "versions": [
+        {
+          "system": "windows",
+          "id": "18.4",
+          "url": "https://sbp.enterprisedb.com/getfile.jsp?fileid=1260303",
+          "format": "zip"
+        },
+        {
+          "system": "windows",
+          "id": "17.10",
+          "url": "https://sbp.enterprisedb.com/getfile.jsp?fileid=1260307",
+          "format": "zip"
+        },
+        {
+          "system": "windows",
+          "id": "16.14",
+          "url": "https://sbp.enterprisedb.com/getfile.jsp?fileid=1260308",
+          "format": "zip"
+        }
+      ],
+      "defaults": {
+        "port": 5432,
+        "username": "root",
+        "password": "",
+        "database": "postgres"
+      },
+      "other_ports": [5433, 5434, 5435]
+    },
+    {
+      "type": "manager",
+      "id": "phpmyadmin",
+      "name": " phpMyAdmin",
+      "versions": [
+        {
+          "system": "windows",
+          "id": "5.2.3",
+          "url": "https://files.phpmyadmin.net/phpMyAdmin/5.2.3/phpMyAdmin-5.2.3-all-languages.zip",
+          "format": "zip"
+        },
+        {
+          "system": "windows",
+          "id": "4.9.11",
+          "url": "https://files.phpmyadmin.net/phpMyAdmin/4.9.11/phpMyAdmin-4.9.11-all-languages.zip",
+          "format": "zip"
+        }
+      ]
+    },
+    {
+      "type": "manager",
+      "id": "adminer",
+      "name": " Adminer",
+      "versions": [
+        {
+          "system": "windows",
+          "id": "5.4.2",
+          "url": "https://github.com/vrana/adminer/releases/download/v5.4.2/adminer-5.4.2.php",
+          "format": "zip"
+        }
+      ]
+    },
+    {
+      "type": "http_server",
+      "id": "apache",
+      "name": "Apache",
+      "versions": [
+        {
+          "system": "windows",
+          "id": "2.4.68",
+          "url": "https://www.apachelounge.com/download/VS18/binaries/httpd-2.4.68-260617-Win64-VS18.zip",
+          "format": "zip"
+        }
+      ],
+      "defaults": {
+        "port": 80
+      },
+      "other_ports": [81, 82, 8080]
+    }
+  ]
+}
