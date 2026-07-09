@@ -7,27 +7,28 @@ import io.github.davidcascante.unostack.models.Module;
 
 public class ModulesController {
 
+    private static final String MODULES_JSON = "io/github/davidcascante/unostack/modules/modules.json";
+
     public static void JSOReader() {
         try {
             ObjectMapper mapper = new ObjectMapper();
 
-            // ✅ CORRECCIÓN 1: Usar el nombre correcto de la clase
-            InputStream inputStream = ModulesController.class.getClassLoader()
-                    .getResourceAsStream("/io/github/davidcascante/unostack/modules/modules.json");
+            // En apps modulares (JPMS), getClassLoader() no ve recursos del módulo.
+            // Usar getModule() o Class.getResourceAsStream(), igual que App carga Main.fxml.
+            InputStream inputStream = ModulesController.class.getModule()
+                    .getResourceAsStream(MODULES_JSON);
 
-            // ✅ CORRECCIÓN 2: Verificar si existe el archivo
             if (inputStream == null) {
-                System.out.println("❌ No encontré el archivo en: src/main/resources/modules/modules.json");
-                System.out.println("📁 Verifica que el archivo exista en esa ruta");
+                System.out.println("❌ No encontré el archivo en el módulo: " + MODULES_JSON);
+                System.out.println("📁 Verifica que exista en src/main/resources/" + MODULES_JSON);
+                System.out.println("📁 y que el proyecto esté compilado (target/classes/" + MODULES_JSON + ")");
                 return;
             }
 
             System.out.println("✅ Archivo encontrado correctamente");
 
-            // ✅ CORRECCIÓN 3: Leer el JSON
             Configuration config = mapper.readValue(inputStream, Configuration.class);
 
-            // ✅ CORRECCIÓN 4: Mostrar los datos
             for (Module module : config.getModules()) {
                 System.out.println("📦 " + module.getName());
                 System.out.println("   Tipo: " + module.getType());
